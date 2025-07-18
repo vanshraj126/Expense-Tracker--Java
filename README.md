@@ -37,3 +37,9 @@ For demo purposes:
 - **User Account**
   - Username: user
   - Password: user123
+---
+## ⚙️ Installation & Setup
+### **1. Clone the repository**
+```bash
+git clone https://github.com/vanshraj126/Expense-Tracker--Java.git
+cd Expense-Tracker--Java
