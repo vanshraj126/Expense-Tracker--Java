@@ -1,0 +1,134 @@
+<!--<!DOCTYPE html>-->
+<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--  <title>Expenses</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Expenses List</h1>-->
+<!--<a th:href="@{/add-expense}">Add New Expense</a>-->
+<!--<table border="1">-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>Description</th>-->
+<!--    <th>Amount</th>-->
+<!--    <th>Date</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody>-->
+<!--  <tr th:each="expense : ${expenses}">-->
+<!--    <td th:text="${expense.description}"></td>-->
+<!--    <td th:text="${expense.amount}"></td>-->
+<!--    <td th:text="${expense.date}"></td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+<!--</body>-->
+<!--</html>-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Expenses List</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    /* Light mode (default) */
+    body {
+      background-color: #fff;
+      color: #000;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Dark mode */
+    body.dark-mode {
+      background-color: #121212;
+      color: #e0e0e0;
+    }
+
+    /* Form inputs and labels for dark mode */
+    body.dark-mode input,
+    body.dark-mode button,
+    body.dark-mode label {
+      background-color: #333;
+      color: #e0e0e0;
+      border: 1px solid #555;
+    }
+
+    /* Links in dark mode */
+    body.dark-mode a {
+      color: #bb86fc;
+    }
+
+    /* Basic styling for form */
+    label {
+      display: inline-block;
+      width: 100px;
+      margin-top: 10px;
+    }
+
+    input {
+      padding: 5px;
+      margin-top: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+
+    /* Toggle button styling */
+    #darkModeToggle {
+      margin: 15px 0;
+      padding: 8px 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="container mt-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>Expenses List</h1>
+    <a th:href="@{/add-expense}" class="btn btn-success">Add New Expense</a>
+    <button id="darkModeToggle">Dark Mode</button>
+  </div>
+
+  <table class="table table-striped table-bordered align-middle">
+    <thead class="table-dark">
+    <tr>
+      <th>Description</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="expense : ${expenses}">
+      <td th:text="${expense.description}">Sample description</td>
+      <td th:text="${expense.amount}">0.00</td>
+      <td th:text="${expense.date}">2024-01-01</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+<script>
+  const toggleButton = document.getElementById('darkModeToggle');
+  const body = document.body;
+
+  // Load saved mode from localStorage
+  if (localStorage.getItem('darkMode') === 'enabled') {
+    body.classList.add('dark-mode');
+  }
+
+  toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
+    if(body.classList.contains('dark-mode')) {
+      localStorage.setItem('darkMode', 'enabled');
+    } else {
+      localStorage.setItem('darkMode', 'disabled');
+    }
+  });
+</script>
+
+</body>
+</html>
